@@ -25,6 +25,11 @@ body {
     min-height: 100vh;
 }
 
+/* Ocultar el perfil mientras se verifica la sesión */
+body.auth-pending{
+    visibility: hidden;
+}
+
 a {
     text-decoration: none;
 }
@@ -83,6 +88,28 @@ a {
 
 .navbar-toggler:focus {
     box-shadow: 0 0 0 .2rem #c9e8f477;
+}
+
+#loginButton {
+    background-color: #b56d8b;
+    border-color: #b56d8b;
+    color: #ffffff;
+}
+
+#loginButton:hover {
+    background-color: #9e5876;
+    border-color: #9e5876;
+}
+
+#loginModal #loginSubmit {
+    background-color: #b56d8b;
+    border-color: #b56d8b;
+    color: #ffffff;
+}
+
+#loginModal #loginSubmit:hover {
+    background-color: #9e5876;
+    border-color: #9e5876;
 }
 
 .hero {
