@@ -510,6 +510,51 @@ app.get("/api/admin/dashboard", requireRoles(1, 2, 3), async (req, res) => {
 }
 );
 
+
+app.get("/api/admin/users", requireRoles(1, 2, 3), async (req, res) => {
+    try {
+        const [rows] = await pool.execute(
+            `SELECT
+                u.id,
+                u.username,
+                u.role_id,
+                u.created_at,
+                d.full_name,
+                d.email,
+                d.phone
+             FROM users AS u
+             INNER JOIN user_details AS d
+                ON d.user_id = u.id
+             ORDER BY u.id ASC`
+        );
+
+        const roleNames = {
+            1: "Admin",
+            2: "Programmer",
+            3: "User_Test",
+            4: "User_General"
+        };
+
+        const users = rows.map((user) => ({
+            ...user,
+            role_name: roleNames[user.role_id] ?? "Unknown"
+        }));
+
+        return res.status(200).json({
+            status: "ok",
+            users
+        });
+    } catch (error) {
+        console.error("User listing failed:", error.message);
+
+        return res.status(500).json({
+            status: "error",
+            message: "Unable to retrieve users."
+        });
+    }
+});
+
+
 app.get("/api/profile", requireRoles(4), async (req, res) => {
     try {
         const [rows] = await pool.execute(

@@ -40,10 +40,160 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html"><i class="bi bi-envelope"></i> Contacto</a>
                     </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-light rounded-pill px-4" type="button" data-bs-toggle="modal" data-bs-target="#loginModal"
+                            id="loginButton">
+                            <i class="bi bi-person-circle me-1"></i>
+                            Login
+                        </button>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- Authentication modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+    
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">
+                        <i class="bi bi-person-circle me-2"></i>
+                        Iniciar sesión
+                    </h5>
+    
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar">
+                    </button>
+                </div>
+    
+                <div class="modal-body">
+    
+                    <!-- Login view -->
+                    <div id="loginView">
+                        <p class="text-muted mb-4">
+                            Ingresa tus credenciales para continuar.
+                        </p>
+    
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="loginUsername" class="form-label">
+                                    <i class="bi bi-person-fill"></i>
+                                    Nombre de usuario
+                                </label>
+    
+                                <input type="text" class="form-control" id="loginUsername" name="username"
+                                    placeholder="Ingresa tu usuario" autocomplete="username" maxlength="50" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">
+                                    <i class="bi bi-key-fill"></i>
+                                    Contraseña
+                                </label>
+    
+                                <input type="password" class="form-control" id="loginPassword" name="password"
+                                    placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
+                            </div>
+    
+                            <div id="loginFeedback" class="alert alert-danger d-none" role="alert" aria-live="polite">
+                            </div>
+    
+                            <button type="submit" class="btn btn-primary w-100" id="loginSubmit">
+                                <i class="bi bi-box-arrow-in-right me-1"></i>
+                                Ingresar
+                            </button>
+                        </form>
+    
+                        <p class="text-center text-muted mt-3 mb-0">
+                            ¿No tienes una cuenta?
+                            <button type="button" class="btn btn-link btn-sm text-muted
+                                           text-decoration-underline p-0" id="showRegister">
+                                Registrarse
+                            </button>
+                        </p>
+                    </div>
+    
+                    <!-- Registration view -->
+                    <div id="registerView" class="d-none">
+                        <p class="text-muted mb-4">
+                            Completa tus datos para crear una cuenta.
+                        </p>
+    
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label for="registerFullName" class="form-label">
+                                    <i class="bi bi-person-fill"></i>
+                                    Nombre completo
+                                </label>
+    
+                                <input type="text" class="form-control" id="registerFullName" name="full_name"
+                                    autocomplete="name" maxlength="100" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">
+                                    <i class="bi bi-envelope"></i>
+                                    Correo electrónico
+                                </label>
+    
+                                <input type="email" class="form-control" id="registerEmail" name="email"
+                                    placeholder="nombre@ejemplo.com" autocomplete="email" maxlength="254" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="registerPhone" class="form-label">
+                                    <i class="bi bi-telephone"></i>
+                                    Teléfono
+                                </label>
+    
+                                <input type="tel" class="form-control" id="registerPhone" name="phone"
+                                    placeholder="Tu número de teléfono" autocomplete="tel" maxlength="20" required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="registerUsername" class="form-label">
+                                    <i class="bi bi-person-badge"></i>
+                                    Nombre de usuario
+                                </label>
+    
+                                <input type="text" class="form-control" id="registerUsername" name="username"
+                                    placeholder="Elige un nombre de usuario" autocomplete="username" maxlength="50"
+                                    required>
+                            </div>
+    
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">
+                                    <i class="bi bi-key-fill"></i>
+                                    Contraseña
+                                </label>
+    
+                                <input type="password" class="form-control" id="registerPassword" name="password"
+                                    placeholder="Mínimo 8 caracteres" autocomplete="new-password" minlength="8" required>
+                            </div>
+    
+                            <div id="registerFeedback" class="alert alert-danger d-none" role="alert" aria-live="polite">
+                            </div>
+    
+                            <button type="submit" class="btn btn-primary w-100" id="registerSubmit">
+                                <i class="bi bi-person-plus me-1"></i>
+                                Crear cuenta
+                            </button>
+                        </form>
+    
+                        <p class="text-center text-muted mt-3 mb-0">
+                            ¿Ya tienes una cuenta?
+                            <button type="button" class="btn btn-link btn-sm text-muted
+                                           text-decoration-underline p-0" id="showLogin">
+                                Iniciar sesión
+                            </button>
+                        </p>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
     <main class="flex-grow-1">
         <section class="container page-hero">
             <p class="eyebrow">Personas, espacios y emociones</p>

@@ -51,10 +51,12 @@
             </div>
         </div>
     </nav>
-    <!-- Sign in modal -->
+    <!-- Authentication modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
+
                 <div class="modal-header">
                     <h5 class="modal-title" id="loginModalLabel">
                         <i class="bi bi-person-circle me-2"></i>
@@ -64,42 +66,186 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar">
                     </button>
                 </div>
+
                 <div class="modal-body">
-                    <p class="text-muted mb-4">
-                        Ingresa tus credenciales para continuar.
-                    </p>
-                    <form id="loginForm">
-                        <div class="mb-3">
-                            <label for="loginEmail" class="form-label">
-                                <i class="bi bi-envelope"></i> Correo electrónico
-                            </label>
 
-                            <input type="email" class="form-control" id="loginEmail" name="email"
-                                placeholder="nombre@ejemplo.com" autocomplete="username" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="loginPassword" class="form-label">
-                                <i class="bi bi-key-fill"></i> Contraseña
-                            </label>
+                    <!-- Login view -->
+                    <div id="loginView">
+                        <p class="text-muted mb-4">
+                            Ingresa tus credenciales para continuar.
+                        </p>
 
-                            <input type="password" class="form-control" id="loginPassword" name="password"
-                                placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
-                        </div>
-                        <!-- Aquí mostraremos los errores de autenticación -->
-                        <div id="loginFeedback" class="alert alert-danger d-none" role="alert" aria-live="polite">
-                        </div>
+                        <form id="loginForm">
+                            <div class="mb-3">
+                                <label for="loginUsername" class="form-label">
+                                    <i class="bi bi-person-fill"></i>
+                                    Nombre de usuario
+                                </label>
 
-                        <button type="submit" class="btn btn-primary w-100" id="loginSubmit">
-                            <i class="bi bi-box-arrow-in-right me-1"></i>
-                            Ingresar
-                        </button>
-                    </form>
+                                <input type="text" class="form-control" id="loginUsername" name="username"
+                                    placeholder="Ingresa tu usuario" autocomplete="username" maxlength="50" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">
+                                    <i class="bi bi-key-fill"></i>
+                                    Contraseña
+                                </label>
+
+                                <input type="password" class="form-control" id="loginPassword" name="password"
+                                    placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
+                            </div>
+
+                            <div id="loginFeedback" class="alert alert-danger d-none" role="alert" aria-live="polite">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100" id="loginSubmit">
+                                <i class="bi bi-box-arrow-in-right me-1"></i>
+                                Ingresar
+                            </button>
+                        </form>
+
+                        <p class="text-center text-muted mt-3 mb-0">
+                            ¿No tienes una cuenta?
+                            <button type="button" class="btn btn-link btn-sm text-muted
+                                       text-decoration-underline p-0" id="showRegister">
+                                Registrarse
+                            </button>
+                        </p>
+                    </div>
+
+                    <!-- Registration view -->
+                    <div id="registerView" class="d-none">
+                        <p class="text-muted mb-4">
+                            Completa tus datos para crear una cuenta.
+                        </p>
+
+                        <form id="registerForm">
+                            <div class="mb-3">
+                                <label for="registerFullName" class="form-label">
+                                    <i class="bi bi-person-fill"></i>
+                                    Nombre completo
+                                </label>
+
+                                <input type="text" class="form-control" id="registerFullName" name="full_name"
+                                    autocomplete="name" maxlength="100" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">
+                                    <i class="bi bi-envelope"></i>
+                                    Correo electrónico
+                                </label>
+
+                                <input type="email" class="form-control" id="registerEmail" name="email"
+                                    placeholder="nombre@ejemplo.com" autocomplete="email" maxlength="254" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="registerPhone" class="form-label">
+                                    <i class="bi bi-telephone"></i>
+                                    Teléfono
+                                </label>
+
+                                <input type="tel" class="form-control" id="registerPhone" name="phone"
+                                    placeholder="Tu número de teléfono" autocomplete="tel" maxlength="20" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="registerUsername" class="form-label">
+                                    <i class="bi bi-person-badge"></i>
+                                    Nombre de usuario
+                                </label>
+
+                                <input type="text" class="form-control" id="registerUsername" name="username"
+                                    placeholder="Elige un nombre de usuario" autocomplete="username" maxlength="50"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">
+                                    <i class="bi bi-key-fill"></i>
+                                    Contraseña
+                                </label>
+
+                                <input type="password" class="form-control" id="registerPassword" name="password"
+                                    placeholder="Mínimo 8 caracteres" autocomplete="new-password" minlength="8"
+                                    required>
+                            </div>
+
+                            <div id="registerFeedback" class="alert alert-danger d-none" role="alert"
+                                aria-live="polite">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100" id="registerSubmit">
+                                <i class="bi bi-person-plus me-1"></i>
+                                Crear cuenta
+                            </button>
+                        </form>
+
+                        <p class="text-center text-muted mt-3 mb-0">
+                            ¿Ya tienes una cuenta?
+                            <button type="button" class="btn btn-link btn-sm text-muted
+                                       text-decoration-underline p-0" id="showLogin">
+                                Iniciar sesión
+                            </button>
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+
     <main class="flex-grow-1">
-        <section class="hero container">
+        <section class="hero container"><!-- Sign in modal -->
+            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginModalLabel">
+                                <i class="bi bi-person-circle me-2"></i>
+                                Iniciar sesión
+                            </h5>
+
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar">
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="text-muted mb-4">
+                                Ingresa tus credenciales para continuar.
+                            </p>
+                            <form id="loginForm">
+                                <div class="mb-3">
+                                    <label for="loginEmail" class="form-label">
+                                        <i class="bi bi-envelope"></i> Correo electrónico
+                                    </label>
+
+                                    <input type="email" class="form-control" id="loginEmail" name="email"
+                                        placeholder="nombre@ejemplo.com" autocomplete="username" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="loginPassword" class="form-label">
+                                        <i class="bi bi-key-fill"></i> Contraseña
+                                    </label>
+
+                                    <input type="password" class="form-control" id="loginPassword" name="password"
+                                        placeholder="Ingresa tu contraseña" autocomplete="current-password" required>
+                                </div>
+                                <!-- Aquí mostraremos los errores de autenticación -->
+                                <div id="loginFeedback" class="alert alert-danger d-none" role="alert"
+                                    aria-live="polite">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100" id="loginSubmit">
+                                    <i class="bi bi-box-arrow-in-right me-1"></i>
+                                    Ingresar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row align-items-center g-5">
                 <div class="col-lg-6">
                     <p class="eyebrow mb-3"><i class="bi bi-geo-alt-fill me-1"></i> Fotografía independiente · Puebla,
@@ -193,7 +339,8 @@
                     <div class="col-lg-4">
                         <p class="eyebrow">Dentro de mi lente</p>
                         <h2 class="section-heading">Un vistazo a mis diferentes servicios</h2>
-                        <p class="section-sub">Una pequeña selección para descubrir diferentes estilos y atmósferas de mis trabajos.</p>
+                        <p class="section-sub">Una pequeña selección para descubrir diferentes estilos y atmósferas de
+                            mis trabajos.</p>
                     </div>
                     <div class="col-lg-8">
                         <div id="workCarousel" class="carousel slide" data-bs-ride="carousel">
