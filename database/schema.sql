@@ -42,3 +42,16 @@ CREATE TABLE IF NOT EXISTS clients (
     email VARCHAR(254) NOT NULL UNIQUE,
     phone VARCHAR(20) NOT NULL
 ) ENGINE = InnoDB;
+
+-- Store logging session
+CREATE TABLE IF NOT EXISTS sessions (
+    session_id VARCHAR(128)
+        COLLATE utf8mb4_bin NOT NULL,
+    expires INT UNSIGNED NOT NULL,
+    data MEDIUMTEXT
+        COLLATE utf8mb4_bin,
+    PRIMARY KEY (session_id),
+    INDEX idx_sessions_expires (expires)
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
