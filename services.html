@@ -202,49 +202,8 @@
                 Estos paquetes son una propuesta inicial y pueden personalizarse.</p>
         </section>
         <section class="container section-pad pt-2">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <article class="service-card">
-                        <div class="icon"><i class="bi bi-person-heart"></i></div>
-                        <h2 class="h4">Retrato personal</h2>
-                        <p class="section-sub">Una sesión relajada para celebrar tu personalidad, actualizar tu imagen o
-                            crear fotografías para tus redes.</p>
-                        <ul class="small">
-                            <li>Guía de poses y selección de locación</li>
-                            <li>Galería digital privada</li>
-                            <li>Fotografías editadas en alta resolución</li>
-                        </ul>
-                        <a href="contact.html" class="btn-outline-custom mt-3">Consultar disponibilidad</a>
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <article class="service-card">
-                        <div class="icon"><i class="bi bi-camera-reels"></i></div>
-                        <h2 class="h4">Editorial y producto</h2>
-                        <p class="section-sub">Imágenes con intención visual para proyectos creativos, marcas
-                            independientes, catálogos o campañas pequeñas.</p>
-                        <ul class="small">
-                            <li>Planeación creativa previa</li>
-                            <li>Dirección visual durante la sesión</li>
-                            <li>Entrega digital organizada</li>
-                        </ul>
-                        <a href="contact.html" class="btn-outline-custom mt-3">Platicar mi idea</a>
-                    </article>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <article class="service-card">
-                        <div class="icon"><i class="bi bi-stars"></i></div>
-                        <h2 class="h4">Eventos íntimos</h2>
-                        <p class="section-sub">Cobertura documental de celebraciones pequeñas, reuniones y momentos que
-                            quieres conservar con naturalidad.</p>
-                        <ul class="small">
-                            <li>Cobertura por horas acordadas</li>
-                            <li>Selección y edición de imágenes</li>
-                            <li>Entrega en galería digital</li>
-                        </ul>
-                        <a href="contact.html" class="btn-outline-custom mt-3">Solicitar información</a>
-                    </article>
-                </div>
+            <div class="row g-4" id="servicesGrid">
+                <p class="text-muted text-center">Cargando servicios...</p>
             </div>
             <div class="soft-panel mt-5">
                 <div class="row align-items-center g-4">
@@ -261,6 +220,17 @@
                 </div>
             </div>
         </section>
+
+        <div id="requestFeedback" class="d-none container" role="alert"></div>
+        
+        <div id="requestBar" class="d-none position-sticky bottom-0 bg-white border-top shadow py-3">
+            <div class="container d-flex justify-content-between align-items-center">
+                <span id="requestBarText"></span>
+                <button type="button" class="btn btn-primary rounded-pill px-4" id="requestButton">
+                    <i class="bi bi-send me-1"></i> Solicitar
+                </button>
+            </div>
+        </div>
     </main>
     <footer class="gradient-footer py-4">
         <div class="container">
@@ -279,7 +249,52 @@
         </div>
     </footer>
 
+    <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requestModalLabel">
+                        <i class="bi bi-send me-2"></i>Detalles de tu solicitud
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+    
+                <form id="requestForm">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="requestEventDate" class="form-label">
+                                Fecha aproximada del evento
+                                <span class="text-muted small">(opcional)</span>
+                            </label>
+                            <input type="date" class="form-control" id="requestEventDate">
+                        </div>
+    
+                        <div class="mb-3">
+                            <label for="requestMessage" class="form-label">
+                                Detalles
+                                <span class="text-muted small">(opcional)</span>
+                            </label>
+                            <textarea class="form-control" id="requestMessage" rows="4" maxlength="1000"
+                                placeholder="Lugar, número de personas, ideas, estilo que buscas..."></textarea>
+                        </div>
+    
+                        <div id="requestModalFeedback" class="alert alert-danger d-none" role="alert"></div>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" id="confirmRequestButton">
+                            <i class="bi bi-send me-1"></i>Enviar solicitud
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="/src/js/pages/login.js"></script>
+    <script type="module" src="/src/js/pages/nav-session.js"></script>
+    <script type="module" src="/src/js/pages/services.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

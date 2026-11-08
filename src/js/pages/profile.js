@@ -68,7 +68,6 @@ profileForm.addEventListener("submit", async (event) => {
 
     const profileData = {
         full_name: fields.full_name.value.trim(),
-        username: fields.username.value.trim(),
         email: fields.email.value.trim(),
         phone: fields.phone.value.trim()
     };

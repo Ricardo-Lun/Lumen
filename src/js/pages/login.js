@@ -74,12 +74,25 @@ loginForm?.addEventListener("submit", async (event) => {
 
         const roleId = Number(user.role_id);
 
-        if ([1, 2, 3].includes(roleId)) {
-            window.location.assign("admin.html");
+        if (![1, 2, 3, 4].includes(roleId)) {
+            throw new Error("Rol de usuario no reconocido.");
+        }
+
+        // Si el login se hizo desde la galería de servicios y es cliente,
+        // nos quedamos ahí para que pueda terminar su solicitud.
+        const isServicesPage = window.location.pathname.endsWith("services.html");
+
+        if (isServicesPage && roleId === 4) {
+            document.dispatchEvent(new CustomEvent("lumen:login", { detail: user }));
+
+            const modalElement = document.getElementById("loginModal");
+            bootstrap.Modal.getInstance(modalElement)?.hide();
+
+            loginForm.reset();
         } else if (roleId === 4) {
             window.location.assign("profile.html");
         } else {
-            throw new Error("Rol de usuario no reconocido.");
+            window.location.assign("admin.html");
         }
     } catch (error) {
         console.error("Error al iniciar sesión:", error.status);

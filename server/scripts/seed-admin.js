@@ -49,15 +49,9 @@ async function seedAdmin() {
             [email]
         );
 
-        const [existingClients] = await connection.execute(
-            "SELECT id FROM clients WHERE email = ?",
-            [email]
-        );
-
         if (
             existingUsers.length > 0 ||
-            existingDetails.length > 0 ||
-            existingClients.length > 0
+            existingDetails.length > 0
         ) {
             throw new Error(
                 "The administrator username or email already exists."
@@ -77,9 +71,8 @@ async function seedAdmin() {
         );
 
         await connection.execute(
-            `INSERT INTO clients (full_name, email, phone)
-             VALUES (?, ?, ?)`,
-            [fullName, email, phone]
+            `INSERT INTO clients (user_id) VALUES (?)`,
+            [userResult.insertId]
         );
 
         await connection.commit();

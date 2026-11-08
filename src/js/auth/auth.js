@@ -1,13 +1,21 @@
 const API_BASE_URL = "http://localhost:3000/api";
 
 export async function apiRequest(endpoint, options = {}) {
+    const { body, headers, ...rest } = options;
+
+    const isPlainObject =
+        body !== null &&
+        typeof body === "object" &&
+        !(body instanceof FormData);
+
     const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        ...options,
+        ...rest,
         credentials: "include",
         headers: {
             "Content-Type": "application/json",
-            ...options.headers
-        }
+            ...headers
+        },
+        body: isPlainObject ? JSON.stringify(body) : body
     });
 
     const data = await response.json().catch(() => ({}));

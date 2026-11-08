@@ -23,10 +23,17 @@
                         <p class="text-muted mb-0">Mi perfil</p>
                     </div>
 
-                    <button type="button" id="logoutButton" class="btn btn-outline-danger">
-                        <i class="bi bi-box-arrow-right me-1"></i>
-                        Cerrar sesión
-                    </button>
+                    <div class="d-flex gap-2">
+                        <a href="services.html" class="btn btn-outline-primary">
+                            <i class="bi bi-stars me-1"></i>
+                            Ver servicios
+                        </a>
+                    
+                        <button type="button" id="logoutButton" class="btn btn-outline-danger">
+                            <i class="bi bi-box-arrow-right me-1"></i>
+                            Cerrar sesión
+                        </button>
+                    </div>
                 </header>
 
                 <div id="profileFeedback" class="alert d-none" role="alert" aria-live="polite"></div>
@@ -53,8 +60,7 @@
                                 <label for="profileUsername" class="form-label">
                                     Nombre de usuario
                                 </label>
-                                <input type="text" class="form-control" id="profileUsername" name="username"
-                                    maxlength="50" required>
+                                <input type="text" class="form-control" id="profileUsername" name="username" maxlength="50" readonly disabled>
                             </div>
 
                             <div class="mb-3">
@@ -81,11 +87,41 @@
                     </div>
                 </section>
 
+                <section class="card shadow-sm mt-4">
+                    <div class="card-header bg-transparent py-3">
+                        <h2 class="h5 mb-0">
+                            <i class="bi bi-list-check me-2"></i>
+                            Gestión de solicitudes
+                        </h2>
+                    </div>
+                
+                    <div class="card-body">
+                        <div id="myRequestsFeedback" class="d-none" role="alert"></div>
+                
+                        <div class="table-responsive">
+                            <table class="table align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Servicio</th>
+                                        <th>Cantidad</th>
+                                        <th>Fecha del evento</th>
+                                        <th>Fecha</th>
+                                        <th>Estatus</th>
+                                        <th class="text-end">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myRequestsTableBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </div>
     </main>
 
     <script type="module" src="/src/js/pages/profile.js"></script>
+    <script type="module" src="/src/js/pages/my-requests.js"></script>
 </body>
 
 </html>
